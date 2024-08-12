@@ -20,17 +20,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="text" class="form-control mb-3" placeholder="First Name">
-            <input type="text" class="form-control mb-3" placeholder="Last Name">
-            <input type="number" class="form-control mb-3" placeholder="Age">
+            <form id="addStudentForm" action="your-server-endpoint" method="post">
+              <input type="text" class="form-control mb-3" name="first_name" placeholder="First Name" required>
+              <input type="text" class="form-control mb-3" name="last_name" placeholder="Last Name" required>
+              <input type="number" class="form-control mb-3" name="age" placeholder="Age" required>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            <button type="submit" form="addStudentForm" class="btn btn-primary">Save</button>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
   <table class="table table-bordered">
@@ -58,8 +61,9 @@
           <tr>
             <td><?php echo $row["id"]; ?></td>
             <td><?php echo $row["firstName"]; ?></td>
-            <td><?php echo $row["lastName"]; // Fixed typo here 
-                ?></td>
+            <td><?php echo $row["lastName"]; // Fixed typo here
+                ?>
+            </td>
             <td><?php echo $row["age"]; ?></td>
             <td>
               <!-- Button trigger modal for Update -->
