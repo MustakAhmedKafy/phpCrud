@@ -20,15 +20,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form id="addStudentForm" action="your-server-endpoint" method="post">
-              <input type="text" class="form-control mb-3" name="first_name" placeholder="First Name" required>
-              <input type="text" class="form-control mb-3" name="last_name" placeholder="Last Name" required>
+            <form id="addStudentForm" action="insert_student.php" method="post">
+              <input type="text" class="form-control mb-3" name="firstName" placeholder="First Name" required>
+              <input type="text" class="form-control mb-3" name="lastName" placeholder="Last Name" required>
               <input type="number" class="form-control mb-3" name="age" placeholder="Age" required>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" form="addStudentForm" class="btn btn-primary">Save</button>
+            <input type="submit" form="addStudentForm" class="btn btn-primary" value="Add" />
           </div>
         </div>
       </div>
