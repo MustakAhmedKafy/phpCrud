@@ -75,24 +75,35 @@
               <div class="modal fade" id="updateStudentModal<?php echo $row['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="updateStudentLabel<?php echo $row['id']; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="updateStudentLabel<?php echo $row['id']; ?>">Update Student</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <input type="text" class="form-control mb-3" value="<?php echo $row['firstName']; ?>" placeholder="First Name">
-                      <input type="text" class="form-control mb-3" value="<?php echo $row['lastName']; ?>" placeholder="Last Name">
-                      <input type="number" class="form-control mb-3" value="<?php echo $row['age']; ?>" placeholder="Age">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save Changes</button>
-                    </div>
+                    <form method="POST" action="update_student_data.php" id="updateStudentData">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="updateStudentLabel<?php echo $row['id']; ?>">Update Student</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                        <input type="text" class="form-control mb-3" name="firstName" value="<?php echo $row['firstName']; ?>" placeholder="First Name">
+                        <input type="text" class="form-control mb-3" name="lastName" value="<?php echo $row['lastName']; ?>" placeholder="Last Name">
+                        <input type="number" class="form-control mb-3" name="age" value="<?php echo $row['age']; ?>" placeholder="Age">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button form="updateStudentData" type="submit" name="updateStudent" class="btn btn-primary">Update</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
+
+
             </td>
-            <td><button class="btn btn-danger">Delete</button></td>
+            <td>
+              <form method="POST" action="delete_student.php">
+                <!-- Hidden input to store the student ID -->
+                <input type="hidden" name="id" value="<?php echo $student_id; ?>">
+                <button class="btn btn-danger" type="submit" name="delete">Delete</button>
+              </form>
+            </td>
           </tr>
       <?php
         }
