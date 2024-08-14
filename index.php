@@ -1,6 +1,5 @@
-<?php include 'header.php' ?>
-<?php include 'includes/db.php' ?>
-
+<?php include 'header.php'; ?>
+<?php include 'includes/db.php'; ?>
 
 <!-- table -->
 <div class="container mt-5">
@@ -33,7 +32,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <table class="table table-bordered">
@@ -50,7 +48,7 @@
     <tbody>
       <?php
       // Query to select all students
-      $sql = "SELECT * FROM `students`";
+      $sql = "SELECT * FROM students";
       $result = $connect->query($sql);
 
       // Check if there are results
@@ -61,9 +59,7 @@
           <tr>
             <td><?php echo $row["id"]; ?></td>
             <td><?php echo $row["firstName"]; ?></td>
-            <td><?php echo $row["lastName"]; // Fixed typo here
-                ?>
-            </td>
+            <td><?php echo $row["lastName"]; ?></td>
             <td><?php echo $row["age"]; ?></td>
             <td>
               <!-- Button trigger modal for Update -->
@@ -75,7 +71,7 @@
               <div class="modal fade" id="updateStudentModal<?php echo $row['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="updateStudentLabel<?php echo $row['id']; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
-                    <form method="POST" action="update_student_data.php" id="updateStudentData">
+                    <form method="POST" action="update_student_data.php">
                       <div class="modal-header">
                         <h5 class="modal-title" id="updateStudentLabel<?php echo $row['id']; ?>">Update Student</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -88,20 +84,17 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button form="updateStudentData" type="submit" name="updateStudent" class="btn btn-primary">Update</button>
+                        <button type="submit" name="updateStudent" class="btn btn-primary">Update</button>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-
-
             </td>
             <td>
               <form method="POST" action="delete_student.php">
-                <!-- Hidden input to store the student ID -->
-                <input type="hidden" name="id" value="<?php echo $student_id; ?>">
-                <button class="btn btn-danger" type="submit" name="delete">Delete</button>
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this student?')">Delete</button>
               </form>
             </td>
           </tr>
@@ -117,4 +110,4 @@
   </table>
 </div>
 
-<?php include 'footer.php' ?>
+<?php include 'footer.php'; ?>
